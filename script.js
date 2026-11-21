@@ -1543,57 +1543,47 @@ function viewMyOrders() {
     showModal("My Orders", html);
 }
 
-// 34. CONNECT WEBSITE BUTTONS
+/* 34. CONNECT WEBSITE BUTTONS */
 
-document.addEventListener("DOMContentLoaded", function () {
+// Do not add another DOMContentLoaded event here.
 
-    const loginButton = document.getElementById("loginBtn");
-    const cartButton = document.getElementById("cartBtn");
-    const menuButton = document.getElementById("menuBtn");
+const loginButton = document.getElementById("loginBtn");
+const cartButton = document.getElementById("cartBtn");
+const menuButton = document.getElementById("menuBtn");
 
-    if (loginButton) {
-        loginButton.addEventListener("click", function () {
-            if (currentUser) {
-                showModal(
-                    "My Account",
-                    `
-                    <p><b>Name:</b> ${escapeHTML(currentUser.username || "")}</p>
-                    <p><b>Mobile:</b> ${escapeHTML(currentUser.phone || "")}</p>
-                    <p><b>Email:</b> ${escapeHTML(currentUser.email || "")}</p>
-                    <p><b>Address:</b> ${escapeHTML(currentUser.address || "")}</p>
+if (loginButton) {
+    loginButton.addEventListener("click", function () {
+        if (currentUser) {
+            showModal(
+                "My Account",
+                `
+                <p>Name: ${escapeHTML(currentUser.username || "")}</p>
+                <p>Mobile: ${escapeHTML(currentUser.phone || "")}</p>
+                <p>Email: ${escapeHTML(currentUser.email || "")}</p>
+                <p>Address: ${escapeHTML(currentUser.address || "")}</p>
+                <button onclick="viewMyOrders()">My Orders</button>
+                <button onclick="logoutUser()">Logout</button>
+                `
+            );
+        } else {
+            openLogin();
+        }
+    });
+}
 
-                    <button type="button" onclick="viewMyOrders()">
-                        My Orders
-                    </button>
+if (cartButton) {
+    cartButton.addEventListener("click", openCart);
+}
 
-                    <button type="button" onclick="logoutUser()">
-                        Logout
-                    </button>
-                    `
-                );
-            } else {
-                openLogin();
-            }
-        });
-    }
+if (menuButton) {
+    menuButton.addEventListener("click", function () {
+        const menu = document.getElementById("menu");
+        if (menu) menu.classList.toggle("active");
+    });
+}
 
-    if (cartButton) {
-        cartButton.addEventListener("click", openCart);
-    }
-
-    if (menuButton) {
-        menuButton.addEventListener("click", function () {
-            const menu = document.getElementById("menu");
-
-            if (menu) {
-                menu.classList.toggle("active");
-            }
-        });
-    }
-
-    updateCartCount();
-    updateLoginButton();
-});
+updateCartCount();
+updateLoginButton();
 
 // 35. MAKE FUNCTIONS AVAILABLE TO HTML BUTTONS
 
