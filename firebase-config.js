@@ -2,7 +2,7 @@ import { initializeApp } from "https://www.gstatic.com/firebasejs/13.4.0/firebas
 import { getAuth } from "https://www.gstatic.com/firebasejs/13.4.0/firebase-auth.js";
 
 const firebaseConfig = {
-  apiKey: "YOUR_API_KEY",
+  apiKey: "AIzaSyDI_qQC8qzlNkGgHSJxXvVd3umX-PRDcHA",
   authDomain: "agromart-14042.firebaseapp.com",
   projectId: "agromart-14042",
   storageBucket: "agromart-14042.firebasestorage.app",
